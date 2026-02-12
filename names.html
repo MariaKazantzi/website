@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Names</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container single">
+        <aside class="letters small">
+            <h2>Alphabet</h2>
+            <div class="grid">
+                <a href="names.html?letter=Α">Α</a>
+                <a href="names.html?letter=Β">Β</a>
+                <a href="names.html?letter=Γ">Γ</a>
+                <a href="names.html?letter=Δ">Δ</a>
+                <a href="names.html?letter=Ε">Ε</a>
+                <a href="names.html?letter=Ζ">Ζ</a>
+                <a href="names.html?letter=Η">Η</a>
+                <a href="names.html?letter=Θ">Θ</a>
+                <a href="names.html?letter=Ι">Ι</a>
+                <a href="names.html?letter=Κ">Κ</a>
+                <a href="names.html?letter=Λ">Λ</a>
+                <a href="names.html?letter=Μ">Μ</a>
+                <a href="names.html?letter=Ν">Ν</a>
+                <a href="names.html?letter=Ξ">Ξ</a>
+                <a href="names.html?letter=Ο">Ο</a>
+                <a href="names.html?letter=Π">Π</a>
+                <a href="names.html?letter=Ρ">Ρ</a>
+                <a href="names.html?letter=Σ">Σ</a>
+                <a href="names.html?letter=Τ">Τ</a>
+                <a href="names.html?letter=Υ">Υ</a>
+                <a href="names.html?letter=Φ">Φ</a>
+                <a href="names.html?letter=Χ">Χ</a>
+                <a href="names.html?letter=Ψ">Ψ</a>
+                <a href="names.html?letter=Ω">Ω</a>
+            </div>
+        </aside>
+
+        <main class="content">
+            <a class="back" href="index.html">← Back</a>
+                <h1 id="heading">Names</h1>
+                <ul id="namesList"></ul>
+        </main>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(location.search);
+        const letter = params.get('letter') || 'Α';
+        const heading = document.getElementById('heading');
+        const namesList = document.getElementById('namesList');
+
+        // Example Greek names for a few letters (extend as needed)
+        const namesByLetter = {
+            'Α': ['Αναστασία', 'Αλέξανδρος', 'Αντώνης'],
+            'Β': ['Βασίλης', 'Βασιλική'],
+            'Γ': ['Γιώργος', 'Γεωργία'],
+            'Δ': ['Δημήτρης', 'Δανάη'],
+            'Ε': ['Ελένη', 'Ευάγγελος'],
+            'Ζ': ['Ζωή'],
+            'Η': ['Ηλίας'],
+            'Θ': ['Θεοδώρα'],
+            'Ι': ['Ιωάννα', 'Ιάσονας'],
+            'Κ': ['Κωνσταντίνος', 'Κατερίνα'],
+            'Λ': ['Λουκάς'],
+            'Μ': ['Μαρία', 'Μιχάλης'],
+            'Ν': ['Νικόλας', 'Νίκη'],
+            'Ξ': ['Ξένια'],
+            'Ο': ['Ορέστης', 'Ολγα'],
+            'Π': ['Παύλος', 'Παναγιώτης'],
+            'Ρ': ['Ραφαέλα'],
+            'Σ': ['Σοφία', 'Στέλιος'],
+            'Τ': ['Τάσος', 'Τζένη'],
+            'Υ': ['Υπατία'],
+            'Φ': ['Φώτης', 'Φωτεινή'],
+            'Χ': ['Χρήστος', 'Χριστίνα'],
+            'Ψ': ['Ψαράκης'],
+            'Ω': ['Ωριγένη']
+        };
+
+        // Map some sample names to detailed pages we will create under /names/
+        const fileMap = {
+            'Αναστασία': 'anastasia.html',
+            'Αλέξανδρος': 'alexandros.html',
+            'Βασίλης': 'vasilis.html',
+            'Γιώργος': 'giorgos.html',
+            'Μαρία': 'maria.html'
+        };
+
+        heading.textContent = `Names starting with ${letter}`;
+        const list = namesByLetter[letter] || ['(No names available yet)'];
+        for (const name of list) {
+            const li = document.createElement('li');
+            const file = fileMap[name] ? `names/${fileMap[name]}` : 'names/unknown.html';
+            const a = document.createElement('a');
+            a.href = file;
+            a.textContent = name;
+            li.appendChild(a);
+            namesList.appendChild(li);
+        }
+    </script>
+</body>
+</html>
