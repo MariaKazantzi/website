@@ -21,6 +21,11 @@ const translations = {
     
     // Tab 3
     "people-title": "PARTICIPANTS",
+    "people-filter": "Filter by Group",
+    "people-all": "All",
+    "people-greek": "Greek Cypriots",
+    "people-british": "British",
+    "people-turkish": "Turkish Cypriots",
     "names-sidebar": "Names",
     
     // Tab 4
@@ -62,6 +67,11 @@ const translations = {
     "calendar-title": "ΗΜΕΡΟΛΟΓΙΟ ΔΡΑΣΗΣ 1955-1959",
     "prev-btn": "← Προηγούμενο",
     "month-label": "Μήνας",
+    "people-filter": "Φίλτρο κατά Ομάδα",
+    "people-all": "Όλα",
+    "people-greek": "Ελληνοκύπριοι",
+    "people-british": "Βρετανοί",
+    "people-turkish": "Τουρκοκύπριοι",
     "year-label": "Έτος",
     "next-btn": "Επόμενο →",
     

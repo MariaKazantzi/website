@@ -124,6 +124,36 @@ body {
   border-color: #0066cc;
 }
 
+.header-filter {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  border-left: 1px solid #ddd;
+  padding-left: 20px;
+  margin-left: 20px;
+}
+
+.header-filter select {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 13px;
+  background-color: white;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+  color: #333;
+}
+
+.header-filter select:focus {
+  outline: none;
+  border-color: #0066cc;
+  box-shadow: 0 0 4px rgba(0, 102, 204, 0.3);
+}
+
+.header-filter select:hover {
+  border-color: #0066cc;
+}
+
 /* 2. The Container (keeps your content from stretching too wide) */
 .container {
   max-width: 800px;
@@ -453,3 +483,20 @@ h2 {
 .submit-btn:active {
   transform: scale(0.98);
 }
+
+/* Hero Image */
+.hero-image {
+  margin: 30px 0;
+  text-align: center;
+}
+
+.eoka-image {
+  max-width: 100%;
+  max-height: 500px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  display: inline-block;
+}
+
+/* Filter Section - Removed (filter now in header) */
