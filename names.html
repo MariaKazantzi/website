@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Names</title>
     <link rel="stylesheet" href="style.css">
+    <script src="translations.js"></script>
+    <script src="translate.js"></script>
 </head>
 <body>
     <div class="container single">
         <aside class="letters small">
-            <h2>Alphabet</h2>
+            <h2 data-translate="alphabet">Alphabet</h2>
             <div class="grid">
                 <a href="names.html?letter=Α">Α</a>
                 <a href="names.html?letter=Β">Β</a>
@@ -39,7 +41,7 @@
         </aside>
 
         <main class="content">
-            <a class="back" href="index.html">← Back</a>
+            <a class="back" href="index.html" data-translate="back">← Back</a>
                 <h1 id="heading">Names</h1>
                 <ul id="namesList"></ul>
         </main>
@@ -88,7 +90,17 @@
             'Μαρία': 'maria.html'
         };
 
-        heading.textContent = `Names starting with ${letter}`;
+        function updateHeading() {
+            const currentLang = localStorage.getItem('language') || 'el';
+            let headingText;
+            if (currentLang === 'en') {
+                headingText = `Names starting with ${letter}`;
+            } else {
+                headingText = `Ονόματα που ξεκινούν με ${letter}`;
+            }
+            heading.textContent = headingText;
+        }
+
         const list = namesByLetter[letter] || ['(No names available yet)'];
         for (const name of list) {
             const li = document.createElement('li');
@@ -99,6 +111,10 @@
             li.appendChild(a);
             namesList.appendChild(li);
         }
+
+        // Update heading on load and when language changes
+        updateHeading();
+        window.addEventListener('languageChanged', updateHeading);
     </script>
 </body>
 </html>

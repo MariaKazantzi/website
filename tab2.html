@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ΗΜΕΡΟΛΟΓΙΟ</title>
     <link rel="stylesheet" href="style.css">
+    <script src="translations.js"></script>
+    <script src="translate.js"></script>
 </head>
 <body>
 
@@ -14,14 +16,14 @@
                 <div class="logo-box">LOGO</div>
             </div>
             <div class="search-box">
-                <input type="text" placeholder="Search...">
+                <input type="text" placeholder="Search..." data-translate-placeholder="search-placeholder">
             </div>
             <nav class="header-tabs">
-                <a class="tab" href="index.html">ΑΡΧΙΚΗ</a>
-                <a class="tab active" href="tab2.html">ΗΜΕΡΟΛΟΓΙΟ</a>
-                <a class="tab" href="tab3.html">ΕΜΠΛΕΚΟΜΕΝΟΙ</a>
-                <a class="tab" href="tab4.html">ΕΓΓΡΑΦΑ</a>
-                <a class="tab" href="tab5.html">CONTACT</a>
+                <a class="tab" href="index.html" data-translate="home">ΑΡΧΙΚΗ</a>
+                <a class="tab active" href="tab2.html" data-translate="calendar">ΗΜΕΡΟΛΟΓΙΟ</a>
+                <a class="tab" href="tab3.html" data-translate="people">ΕΜΠΛΕΚΟΜΕΝΟΙ</a>
+                <a class="tab" href="tab4.html" data-translate="documents">ΕΓΓΡΑΦΑ</a>
+                <a class="tab" href="tab5.html" data-translate="contact">CONTACT</a>
             </nav>
             <div class="language-switcher">
                 <button class="lang-btn active" data-lang="el">ΕΛ</button>
@@ -33,15 +35,14 @@
     <div class="container">
 
         <main class="content">
-            <h1>ΗΜΕΡΟΛΟΓΙΟ ΔΡΑΣΗΣ 1955-1959</h1>
-            <h2>CALENDAR 1955-1959</h2>
+            <h1 data-translate="calendar-title">ΗΜΕΡΟΛΟΓΙΟ ΔΡΑΣΗΣ 1955-1959</h1>
 
             <div class="calendar-container">
                 <div class="calendar-controls">
-                    <button id="prevBtn">← Previous</button>
+                    <button id="prevBtn" data-translate-value="prev-btn">← Previous</button>
                     <select id="monthSelector"></select>
                     <select id="yearSelector"></select>
-                    <button id="nextBtn">Next →</button>
+                    <button id="nextBtn" data-translate-value="next-btn">Next →</button>
                 </div>
                 <div id="calendarGrid"></div>
             </div>
@@ -54,13 +55,20 @@
         const minYear = 1955;
         const maxYear = 1959;
 
-        const monthNames = [
+        const monthNamesEn = [
             'January', 'February', 'March', 'April', 'May', 'June',
             'July', 'August', 'September', 'October', 'November', 'December'
         ];
 
-        // Sample events for EOKA period (1955-1959)
-        const events = {
+        const monthNamesEl = [
+            'Ιανουάριος', 'Φεβρουάριος', 'Μάρτιος', 'Απρίλιος', 'Μάιος', 'Ιούνιος',
+            'Ιούλιος', 'Αύγουστος', 'Σεπτέμβριος', 'Οκτώβριος', 'Νοέμβριος', 'Δεκέμβριος'
+        ];
+
+        let monthNames = monthNamesEl;
+
+        // Sample events for EOKA period (1955-1959) - English
+        const eventsEn = {
             '1955-01-01': 'New Year 1955 - EOKA organization begins planning',
             '1955-04-01': 'EOKA campaign officially launches',
             '1955-06-15': 'First major EOKA operation',
@@ -80,6 +88,30 @@
             '1959-04-01': 'Cyprus gains independence',
             '1959-08-16': 'Archbishop Makarios becomes President'
         };
+
+        // Sample events for EOKA period (1955-1959) - Greek
+        const eventsEl = {
+            '1955-01-01': 'Πρωτοχρονιά 1955 - Ξεκινά η οργάνωση της Ε.Ο.Κ.Α',
+            '1955-04-01': 'Επίσημη έναρξη της καμπάνιας της Ε.Ο.Κ.Α',
+            '1955-06-15': 'Πρώτη μεγάλη επιχείρηση της Ε.Ο.Κ.Α',
+            '1955-08-09': 'Ο Βρετανός Κυβερνήτης John Harding φθάνει στην Κύπρο',
+            '1955-09-01': 'Ανακοίνωση κατάστασης ανάγκης στην Κύπρο',
+            '1956-03-17': 'Εξορία του Μακαρίου III στα Σεϋχέλλες',
+            '1956-05-20': 'Μεγάλη επιχείρηση των δυνάμεων της Ε.Ο.Κ.Α',
+            '1956-08-12': 'Άφιξη βρετανικών στρατιωτικών ενισχύσεων',
+            '1957-01-10': 'Η Ε.Ο.Κ.Α εντείνει τον ένοπλο αγώνα',
+            '1957-06-01': 'Έναρξη διαπραγματεύσεων για ειρήνη',
+            '1957-12-19': 'Απελευθέρωση του Μακαρίου από τη κράτηση',
+            '1958-02-24': 'Απόρριψη του Σχεδίου Radcliffe',
+            '1958-06-04': 'Εντείνονται οι βρετανικές εναντίον-αντάρτικες επιχειρήσεις',
+            '1958-09-12': 'Σχηματισμός της οργάνωσης TMT των Τουρκοκυπρίων',
+            '1958-12-15': 'Εμπλοκή του ΟΗΕ στο Κυπριακό',
+            '1959-02-19': 'Υπογραφή των Συμφωνιών Zurich και Λονδίνου',
+            '1959-04-01': 'Η Κύπρος αποκτά ανεξαρτησία',
+            '1959-08-16': 'Ο Αρχιεπίσκοπος Μακάριος καθίσταται Πρόεδρος'
+        };
+
+        let events = eventsEl;
 
         function getEventForDate(year, month, day) {
             const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
@@ -235,6 +267,38 @@
 
         // Initial render
         render();
+
+        // Handle language changes
+        window.addEventListener('languageChanged', function() {
+            const currentLang = localStorage.getItem('language') || 'el';
+            monthNames = currentLang === 'el' ? monthNamesEl : monthNamesEn;
+            events = currentLang === 'el' ? eventsEl : eventsEn;
+            
+            // Update button values
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            if (currentLang === 'en') {
+                prevBtn.textContent = '← Previous';
+                nextBtn.textContent = 'Next →';
+            } else {
+                prevBtn.textContent = '← Προηγούμενο';
+                nextBtn.textContent = 'Επόμενο →';
+            }
+            
+            // Update month selector options
+            const monthSelector = document.getElementById('monthSelector');
+            const currentMonthValue = monthSelector.value;
+            monthSelector.innerHTML = '';
+            monthNames.forEach((name, index) => {
+                const option = document.createElement('option');
+                option.value = index;
+                option.textContent = name;
+                monthSelector.appendChild(option);
+            });
+            monthSelector.value = currentMonthValue;
+            
+            render();
+        });
     </script>
     
 </body>
