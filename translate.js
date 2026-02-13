@@ -64,4 +64,12 @@ function applyTranslations(lang) {
       }
     }
   });
+  
+  // Update form labels - handle label elements with data-translate
+  document.querySelectorAll('label[data-translate]').forEach(label => {
+    const key = label.dataset.translate;
+    if (translations[lang] && translations[lang][key]) {
+      label.textContent = translations[lang][key];
+    }
+  });
 }

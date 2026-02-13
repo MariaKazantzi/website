@@ -28,6 +28,13 @@ const translations = {
     
     // Tab 5
     "contact-title": "CONTACT INFORMATION",
+    "contact-subtitle": "Feel free to reach out to us for any questions or feedback!",
+    
+    // Contact form
+    "contact-form-name": "Name",
+    "contact-form-email": "Email",
+    "contact-form-message": "Message",
+    "contact-form-submit": "Send",
     
     // Names page
     "alphabet": "Alphabet",
@@ -67,6 +74,13 @@ const translations = {
     
     // Tab 5
     "contact-title": "ΣΤΟΙΧΕΙΑ ΕΠΙΚΟΙΝΩΝΙΑΣ",
+    "contact-subtitle": "Μη διστάσετε να επικοινωνήσετε μαζί μας για οποιεσδήποτε ερωτήσεις ή σχόλια!",
+    
+    // Contact form
+    "contact-form-name": "Όνομα",
+    "contact-form-email": "Email",
+    "contact-form-message": "Μήνυμα",
+    "contact-form-submit": "Αποστολή",
     
     // Names page
     "alphabet": "Αλφάβητο",
