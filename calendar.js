@@ -55,17 +55,12 @@ const eventsEl = {
     '1959-08-16': 'Ο Αρχιεπίσκοπος Μακάριος καθίσταται Πρόεδρος'
 };
 
-let monthNames = monthNamesEl;
-let events = eventsEl;
+// Set language BEFORE DOMContentLoaded from localStorage
+const savedLang = localStorage.getItem('language') || 'el';
+let monthNames = savedLang === 'en' ? monthNamesEn : monthNamesEl;
+let events = savedLang === 'en' ? eventsEn : eventsEl;
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Check saved language preference
-    const savedLang = localStorage.getItem('language') || 'el';
-    if (savedLang === 'en') {
-        monthNames = monthNamesEn;
-        events = eventsEn;
-    }
-
     initializeCalendar();
 });
 

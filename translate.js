@@ -1,7 +1,30 @@
+// Set up active button state as soon as this script loads (synchronously)
+// This runs before DOMContentLoaded to prevent flashing
+function initializeButtonsSync() {
+  const savedLanguage = localStorage.getItem('language') || 'el';
+  const langButtons = document.querySelectorAll('.lang-btn');
+  if (langButtons.length > 0) {
+    langButtons.forEach(btn => {
+      btn.classList.remove('active');
+    });
+    const activeBtn = document.querySelector(`[data-lang="${savedLanguage}"]`);
+    if (activeBtn) {
+      activeBtn.classList.add('active');
+    }
+  }
+}
+
+// Try to initialize buttons immediately if DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeButtonsSync);
+} else {
+  initializeButtonsSync();
+}
+
 // Initialize language on page load
 document.addEventListener('DOMContentLoaded', function() {
   const savedLanguage = localStorage.getItem('language') || 'el';
-  initializeLanguage(savedLanguage);
+  applyTranslations(savedLanguage);
   setupLanguageButtons();
 });
 

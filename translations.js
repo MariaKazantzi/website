@@ -37,6 +37,7 @@ const translations = {
     
     // Contact form
     "contact-form-name": "Name",
+    "contact-form-surname": "Surname",
     "contact-form-email": "Email",
     "contact-form-message": "Message",
     "contact-form-submit": "Send",
@@ -88,6 +89,7 @@ const translations = {
     
     // Contact form
     "contact-form-name": "Όνομα",
+    "contact-form-surname": "Επώνυμο",
     "contact-form-email": "Email",
     "contact-form-message": "Μήνυμα",
     "contact-form-submit": "Αποστολή",
