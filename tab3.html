@@ -34,9 +34,11 @@
     </header>
 
     <div class="container">
-        <aside class="letters">
-            <h2 data-translate="names-sidebar">Names</h2>
-            <div class="grid">
+    <main class="content">
+        <h1 data-translate="people-title">ΕΜΠΛΕΚΟΜΕΝΟΙ</h1>
+
+        <div class="letters-horizontal">
+            <div class="letters-grid">
                 <a href="names.html?letter=Α">Α</a>
                 <a href="names.html?letter=Β">Β</a>
                 <a href="names.html?letter=Γ">Γ</a>
@@ -62,12 +64,9 @@
                 <a href="names.html?letter=Ψ">Ψ</a>
                 <a href="names.html?letter=Ω">Ω</a>
             </div>
-        </aside>
-
-        <main class="content">
-            <h1 data-translate="people-title">ΕΜΠΛΕΚΟΜΕΝΟΙ</h1>
-        </main>
-    </div>
+        </div>
+    </main>
+</div>
     
     <script>
         function handleGroupFilter(value) {
@@ -85,13 +84,6 @@
 
         function updateSelectOptions() {
             const currentLang = localStorage.getItem('language') || 'el';
-            const options = [
-                { value: '', en: 'Select Group...', el: 'Επιλέξτε Ομάδα...' },
-                { value: 'greek', en: 'Greek Cypriots', el: 'Ελληνοκύπριοι' },
-                { value: 'british', en: 'British', el: 'Βρετανοί' },
-                { value: 'turkish', en: 'Turkish Cypriots', el: 'Τουρκοκύπριοι' }
-            ];
-
             const select = document.getElementById('groupFilter');
             const currentValue = select.value;
             select.innerHTML = '';
